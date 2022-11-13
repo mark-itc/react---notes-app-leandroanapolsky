@@ -1,0 +1,89 @@
+:root {
+  /* --main: #5cdb95;
+  --second: #05386b; */
+
+  --main: #da5a2a;
+  --second: #3b1877;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--main);
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  color: white;
+}
+
+.container {
+  position: absolute;
+  top: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: var(--second);
+}
+.form-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-field {
+  align-self: center;
+  width: 60%;
+  height: 90px;
+  border-radius: 5px;
+  border: none;
+}
+
+.add-button {
+  outline: none;
+  align-self: center;
+  width: 20%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 3px solid var(--second);
+  color: var(--second);
+  background-color: var(--main);
+  transform: 1s;
+  font-weight: 700;
+}
+
+.add-button:hover {
+  font-weight: 700;
+  background-color: var(--second);
+  color: var(--main);
+  transform: 1s;
+}
+
+.notes-grid {
+  margin-top: 5vh;
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  background-color: var(--main);
+}
+
+.new-note {
+  color: var(--main);
+  background-color: var(--second);
+  width: 30%;
+  margin: 10px 10px;
+  padding: 5px;
+  font-weight: 500;
+}
+
+.note-text {
+  font-size: 15px;
+}
+
+.note-date {
+  font-size: 10px;
+}
