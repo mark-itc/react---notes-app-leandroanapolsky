@@ -1,31 +1,51 @@
 import "./App.css";
 import { useState } from "react";
 
+function Note(props) {
+  const { date } = props;
+  return (
+    <div>
+      <h2>Note title</h2>
+      <div className="note-date">{date}</div>
+      <div className="note-text">Example Note</div>
+    </div>
+  );
+}
+
 function NotesContainer() {
-  const [notes, setNotes] = useState([]);
+  const [noteItems, setNoteItems] = useState([]);
   const [date, setDate] = useState(new Date());
 
-  const onAddNoteClick = () => {
-    const newNote = "Example Note";
+  const onAddNoteClicked = () => {
     setDate(date.toString());
-    setNotes([...notes, newNote]);
+    setNoteItems([...noteItems, ""]);
   };
+
+  const onDeleteItem = (noteIndex) => {
+    const noteItemsDuplicated = [...noteItems];
+    noteItemsDuplicated.splice(noteIndex, 1);
+    setNoteItems(noteItemsDuplicated);
+  };
+
+  const noNotes = noteItems.length === 0;
 
   return (
     <div className="container">
-      <h1>My Notes</h1>
-      <div className="form-style">
-        <input type="text" className="input-field" />
-        <button onClick={onAddNoteClick} className="add-button">
-          Add Note
-        </button>
-      </div>
-
+      <h1>MY NOTES</h1>
+      <input type="text" className="input-field" />
+      <button onClick={onAddNoteClicked} className="add-button">
+        new note
+      </button>
       <div className="notes-grid">
-        {notes.map((note) => (
+        {noteItems.map((note, index) => (
           <div className="new-note">
-            <div className="note-date">{date}</div>
-            <div className="note-text">{note}</div>
+            <Note key={note + index.toString()} date={date} />
+            <button
+              onClick={() => onDeleteItem(index)}
+              className="delete-button"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
@@ -42,3 +62,57 @@ function App() {
 }
 
 export default App;
+
+//--------------------------------------
+
+// function NotesContainer() {
+//   const [notes, setNotes] = useState([]);
+//   const [date, setDate] = useState(new Date());
+
+//   const onAddNoteClick = () => {
+//     const newNote = "Example Note" + notes.length.toString();
+//     setDate(date.toString());
+//     setNotes([...notes, newNote]);
+//   };
+
+//   const onDeleteClick = () => {
+//     setNotes(notes.slice(0, -1));
+//   };
+
+//   const onDeleteButtonClick = (deletedItem) => {
+//     const alreadyDeletedNotes = notes.filter((notes) => notes !== deletedItem);
+//     setNotes(alreadyDeletedNotes);
+//   };
+
+//   return (
+//     <div className="container">
+//       <h1>My Notes</h1>
+//       <div className="form-style">
+//         <input type="text" className="input-field" />
+//         <button onClick={onAddNoteClick} className="add-button">
+//           Add Note
+//         </button>
+//       </div>
+
+//       <div className="notes-grid">
+//         {notes.map((note) => (
+//           <div className="new-note">
+//             <div className="note-date">{date}</div>
+//             <div className="note-text">{note}</div>
+//             <button onClick={onDeleteClick}>X</button>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <NotesContainer />
+//     </div>
+//   );
+// }
+
+// export default App;

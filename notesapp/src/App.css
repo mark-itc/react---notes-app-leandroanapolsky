@@ -13,7 +13,6 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-
   color: white;
 }
 
@@ -76,14 +75,37 @@ h1 {
   background-color: var(--second);
   width: 30%;
   margin: 10px 10px;
-  padding: 5px;
+  padding: 15px;
   font-weight: 500;
 }
 
 .note-text {
+  font-weight: 700;
   font-size: 15px;
+  padding: 10px;
 }
 
 .note-date {
   font-size: 10px;
+}
+
+.delete-button {
+  outline: none;
+  align-self: center;
+  width: 20%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--main);
+  color: var(--main);
+  background-color: var(--second);
+  transform: 1s;
+  font-weight: 700;
+}
+
+.delete-button:hover {
+  font-weight: 700;
+  background-color: var(--main);
+  color: var(--second);
+  transform: 1s;
 }
