@@ -1,7 +1,4 @@
 :root {
-  /* --main: #5cdb95;
-  --second: #05386b; */
-
   --main: #da5a2a;
   --second: #3b1877;
 }
@@ -9,6 +6,7 @@
 .App {
   text-align: center;
   background-color: var(--main);
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -19,7 +17,7 @@
 .container {
   position: absolute;
   top: 50px;
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
 }
@@ -51,7 +49,7 @@ h1 {
   border: 3px solid var(--second);
   color: var(--second);
   background-color: var(--main);
-  transform: 1s;
+  transition: 0.3s;
   font-weight: 700;
 }
 
@@ -59,7 +57,7 @@ h1 {
   font-weight: 700;
   background-color: var(--second);
   color: var(--main);
-  transform: 1s;
+  transition: 0.3s;
 }
 
 .notes-grid {
@@ -74,7 +72,7 @@ h1 {
   color: var(--main);
   background-color: var(--second);
   width: 30%;
-  margin: 10px 10px;
+  margin: 5px 3px;
   padding: 15px;
   font-weight: 500;
 }
@@ -99,7 +97,7 @@ h1 {
   border: 1px solid var(--main);
   color: var(--main);
   background-color: var(--second);
-  transform: 1s;
+  transition: 0.3s;
   font-weight: 700;
 }
 
@@ -107,5 +105,5 @@ h1 {
   font-weight: 700;
   background-color: var(--main);
   color: var(--second);
-  transform: 1s;
+  transition: 0.3s;
 }

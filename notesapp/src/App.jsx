@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import DeleteMessage from "./message";
 
 function Note(props) {
   const { date } = props;
@@ -15,9 +16,12 @@ function Note(props) {
 function NotesContainer() {
   const [noteItems, setNoteItems] = useState([]);
   const [date, setDate] = useState(new Date());
+  const [dialog, setDialog] = useState({
+    isLoading: false,
+  });
 
   const onAddNoteClicked = () => {
-    setDate(date.toString());
+    setDate(new Date().toString());
     setNoteItems([...noteItems, ""]);
   };
 
@@ -25,6 +29,24 @@ function NotesContainer() {
     const noteItemsDuplicated = [...noteItems];
     noteItemsDuplicated.splice(noteIndex, 1);
     setNoteItems(noteItemsDuplicated);
+  };
+
+  const handleDialog = (isLoading) => {
+    setDialog({ isLoading });
+  };
+
+  const onDeleteClick = (index) => {
+    console.log(index);
+    handleDialog(true, index);
+  };
+
+  const sureToDelete = (choose) => {
+    if (choose) {
+      onDeleteItem();
+      handleDialog(false);
+    } else {
+      handleDialog(false);
+    }
   };
 
   const noNotes = noteItems.length === 0;
@@ -41,7 +63,7 @@ function NotesContainer() {
           <div className="new-note">
             <Note key={note + index.toString()} date={date} />
             <button
-              onClick={() => onDeleteItem(index)}
+              onClick={() => onDeleteClick(index)}
               className="delete-button"
             >
               Delete
@@ -49,6 +71,7 @@ function NotesContainer() {
           </div>
         ))}
       </div>
+      {dialog.isLoading && <DeleteMessage onDialog={sureToDelete} />}
     </div>
   );
 }
